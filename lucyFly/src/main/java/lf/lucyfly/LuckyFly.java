@@ -7,23 +7,23 @@ import com.jme3.renderer.RenderManager;
 import com.jme3.system.AppSettings;
 
 /**
- * test
+ * LookyFly game main class
  *
- * @author normenhansen
+ * @author csilla
  */
-public class LookyFly extends SimpleApplication {
+public class LuckyFly extends SimpleApplication {
 
-    private Akadalyok akadalyok;
-    private Karakter karakter;
+    private Obstacle obstacle;
+    private Player player;
 
     public static void main(String[] args) {
-        LookyFly app = new LookyFly();
+        LuckyFly app = new LuckyFly();
         app.setShowSettings(false);
         AppSettings settings = new AppSettings(true);
         settings.put("Width", 1280);
         settings.put("Height", 720);
         settings.put("Title", "My awesome Game");
-        settings.put("VSync", true);//Anti-Aliasing
+        settings.put("VSync", true);// Anti-Aliasing
         settings.put("Samples", 4);
         app.setSettings(settings);
         app.start();
@@ -31,23 +31,19 @@ public class LookyFly extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        akadalyok = new Akadalyok(assetManager, 100);
-        karakter = new Karakter(inputManager, assetManager);
+        obstacle = new Obstacle(assetManager, 4);
+        player = new Player(inputManager, assetManager);
 
-        rootNode.attachChild(akadalyok.getRootNode());
-        rootNode.attachChild(karakter.getRootNode());
-
+        rootNode.attachChild(obstacle.getRootNode());
+        rootNode.attachChild(player.getRootNode());
 
         cam.setLocation(new Vector3f(0f, 5f, 20f));
         flyCam.setEnabled(false);
-        //initKeys();
-        //CollisionResults results = new CollisionResults();
-        //karakter.collideWith(akadalyok, results);
     }
 
     @Override
     public void simpleUpdate(float tpf) {
-        akadalyok.update(tpf);
+        obstacle.update(tpf);
     }
 
     @Override
