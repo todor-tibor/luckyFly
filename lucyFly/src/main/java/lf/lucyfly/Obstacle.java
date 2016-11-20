@@ -41,7 +41,7 @@ public class Obstacle {
         Random rand = new Random();
         List<ColorRGBA> szinTomb = Arrays.asList(ColorRGBA.Blue, ColorRGBA.Brown, ColorRGBA.Green, ColorRGBA.Red,
                 ColorRGBA.Yellow);
-        List<Float> xTomb = Arrays.asList(-2.8f, -2.3f, -1.5f, 0f, 1.5f, 2.3f, 2.8f);
+        
         for (int i = 0; i < size; i++) {
             Box box = new Box(1, 1, 1);
             Geometry geom = new Geometry("geometry", box);
@@ -49,9 +49,7 @@ public class Obstacle {
             material.setColor("Color", szinTomb.get(rand.nextInt(szinTomb.size())));
             geom.setMaterial(material);
 
-            float z = (float) (-10.0 - i * 6);
-            float x = xTomb.get(rand.nextInt(xTomb.size()));
-            geom.setLocalTranslation(new Vector3f(x, 0.0f, z));
+            
             root.attachChild(geom);
         }
     }
