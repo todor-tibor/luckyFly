@@ -37,10 +37,10 @@ public class Obstacle {
         return this.root;
     }
 
-    private void create() {
-        Random rand = new Random();
-        List<ColorRGBA> szinTomb = Arrays.asList(ColorRGBA.Blue, ColorRGBA.Brown, ColorRGBA.Green, ColorRGBA.Red,
-                ColorRGBA.Yellow);
+    public void create() {
+       Random rand = new Random();
+        List<ColorRGBA> szinTomb = Arrays.asList(ColorRGBA.DarkGray, ColorRGBA.Brown, ColorRGBA.Green, ColorRGBA.Red,
+                ColorRGBA.Yellow,ColorRGBA.Cyan);
         
         for (int i = 0; i < size; i++) {
             Box box = new Box(1, 1, 1);
